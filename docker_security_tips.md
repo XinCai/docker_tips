@@ -8,6 +8,8 @@ Tip #1: Don't run the container as the root user
 
 Tip #2: Use a multi-stage build + distroless base image
 
+[Distroless Docker](https://www.youtube.com/watch?v=lviLZFciDv4 "2017 swampUP Sessions | Distroless Docker: Containerizing Apps, not VMs - Matthew Moore")
+
 Tip #3: Harden the security of the host system
 
 Tip #4: Use a container image scanner to detect vulnerabilities
