@@ -18,6 +18,8 @@ Distroless 是谷歌内部使用的镜像构建文件，包括 Java 镜像，Nod
 
 [Docker MultiStage build](https://docs.docker.com/develop/develop-images/multistage-build/ "multi stage")
 
+[MultiStage Dockerfile](Dockerfile.distroless "example")
+
 ### Tip #3: Harden the security of the host system
 
 ### Tip #4: Use a container image scanner to detect vulnerabilities
