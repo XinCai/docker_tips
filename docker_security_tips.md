@@ -3,7 +3,7 @@
 [Youtube video](https://www.youtube.com/watch?v=JE2PJbbpjsM "example video")
 
 Tip #1: Don't run the container as the root user
-example
+[non root docker file example](Dockerfile.non-root "example")
 
 Tip #2: Use a multi-stage build + distroless base image
 
