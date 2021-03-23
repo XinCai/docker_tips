@@ -10,6 +10,11 @@ Tip #2: Use a multi-stage build + distroless base image
 
 [Distroless Docker](https://www.youtube.com/watch?v=lviLZFciDv4 "2017 swampUP Sessions | Distroless Docker: Containerizing Apps, not VMs - Matthew Moore")
 
+Distroless：谷歌内部使用的镜像构建文件
+
+Distroless 是谷歌内部使用的镜像构建文件，包括 Java 镜像，Node，Python 等镜像构建文件，Distroless 仅仅只包含运行服务所需要的最小镜像，不包含包管理工具，shell 命令行等其他功能。
+
+
 Tip #3: Harden the security of the host system
 
 Tip #4: Use a container image scanner to detect vulnerabilities
