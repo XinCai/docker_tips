@@ -2,24 +2,24 @@
 
 [Youtube video](https://www.youtube.com/watch?v=JE2PJbbpjsM "example video")
 
-Tip #1: Don't run the container as the root user
+### Tip #1: Don't run the container as the root user
 
 [non-root Dockerfile](Dockerfile.non-root "example")
 
-Tip #2: Use a multi-stage build + distroless base image
+### Tip #2: Use a multi-stage build + distroless base image
 
 [Distroless Docker](https://www.youtube.com/watch?v=lviLZFciDv4 "2017 swampUP Sessions | Distroless Docker: Containerizing Apps, not VMs - Matthew Moore")
 
-Distroless：谷歌内部使用的镜像构建文件
+`Distroless：谷歌内部使用的镜像构建文件
 
-Distroless 是谷歌内部使用的镜像构建文件，包括 Java 镜像，Node，Python 等镜像构建文件，Distroless 仅仅只包含运行服务所需要的最小镜像，不包含包管理工具，shell 命令行等其他功能。
+Distroless 是谷歌内部使用的镜像构建文件，包括 Java 镜像，Node，Python 等镜像构建文件，Distroless 仅仅只包含运行服务所需要的最小镜像，不包含包管理工具，shell 命令行等其他功能。`
 
 
-Tip #3: Harden the security of the host system
+### Tip #3: Harden the security of the host system
 
-Tip #4: Use a container image scanner to detect vulnerabilities
+### Tip #4: Use a container image scanner to detect vulnerabilities
 
-Tip #5: Don't install/configure things within the Dockerfile without understanding the potential risks
+### Tip #5: Don't install/configure things within the Dockerfile without understanding the potential risks
 
 
 ### Set current host user for docker container 
