@@ -1,5 +1,7 @@
 # How to secure your Docker containers! (5 practical tips with example Dockerfiles! 🐳)
 
+![youtube video](https://www.youtube.com/watch?v=JE2PJbbpjsM )
+
 Tip #1: Don't run the container as the root user
 example
 
