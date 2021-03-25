@@ -27,7 +27,7 @@ Distroless 是谷歌内部使用的镜像构建文件，包括 Java 镜像，Nod
 ### Tip #5: Don't install/configure things within the Dockerfile without understanding the potential risks
 
 
-### Set current host user for docker container 
+## Set current host user for docker container (Example)
 
 `Env: ubuntu 18.04, Docker 18.09.4, Docker-compose 1.23.2`
 
