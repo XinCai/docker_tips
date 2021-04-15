@@ -102,3 +102,8 @@ ls -l /bin/passwd
 #### Docker `--no-new-privileges` flag on a `docker run` command
 
 
+## Linux Capabilities 
+
+
+
+
