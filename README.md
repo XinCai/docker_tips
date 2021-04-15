@@ -144,9 +144,16 @@ Linux 引入了 capabilities 机制对 root 权限进行细粒度的控制，实
 ### 如何使用 capabilities?
 
 `getcap` 命令和 `setcap` 命令分别用来查看和设置程序文件的 `capabilities` 属性。下面我们演示如何使用 `capabilities` 代替 ping 命令的 SUID。
-因为 ping 命令在执行时需要访问网络，这就需要获得 root 权限，常规的做法是通过 SUID 实现的(和 passwd 命令相同)：
+因为 ping 命令在执行时需要访问网络，这就需要获得 `root` 权限，常规的做法是通过 `SUID` 实现的(和 `passwd` 命令相同)：
 
-[使用capabilities](https://www.cnblogs.com/sparkdev/p/11417781.html "使用capabilities 示例")
+[使用capabilities配置ping命令,使普通用户来执行ping命令](https://www.cnblogs.com/sparkdev/p/11417781.html "使用capabilities 示例")
+
+为 ping 命令文件添加 `capabilities`： 
+执行 ping 命令所需的 capabilities 为 `cap_net_admin` 和 `cap_net_raw`，通过 `setcap` 命令可以添加它们：
+```
+$ sudo setcap cap_net_admin,cap_net_raw+ep /bin/ping
+```
+被赋予合适的 capabilities 后，ping 命令又可以正常工作了，相比 SUID 它只具有必要的特权，在最大程度上减小了系统的安全攻击面。
 
 
 ### It is a good idea to run software as a nonprivileged user whenever possible 
