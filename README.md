@@ -140,3 +140,14 @@ Linux 引入了 capabilities 机制对 root 权限进行细粒度的控制，实
 |CAP_MAC_ADMIN |	允许 MAC 配置或状态更改|
 |CAP_MAC_OVERRIDE|	覆盖 MAC(Mandatory Access Control)|
 |CAP_MKNOD|	允许使用 mknod() 系统调用|
+
+### It is a good idea to run software as a nonprivileged user whenever possible 
+默认的情况下， **container run as root**
+
+### 容器下潜在的安全问题 (特权提升 privilege escalation)
+Even if a container is running as a non-root user, there is potential for privilege esca‐
+lation based on the Linux permissions mechanisms you have seen earlier in this
+chapter:
+
+1. Container images including with a setuid binary
+2. Additional capabilities granted to a container running as a non-root user
