@@ -83,4 +83,19 @@ Application code 需要配置 密码 或 证书 一类的来 communicate with ot
 ## File Permissions (文件权限是 安全的基石)  
 在 linux 操作系统下，everything is a file. 
 
+### 理解 setuid 位
+
+通常，在类 Unix 操作系统上，文件和目录的所有权是基于文件创建者的默认 uid（user-id）和 gid（group-id）的。启动一个进程时也是同样的情况：它以启动它的用户的 uid 和 gid 运行，并具有相应的权限。这种行为可以通过使用特殊的权限进行改变。
+
+
+当使用 setuid （设置用户 ID）位时，之前描述的行为会有所变化，所以当一个可执行文件启动时，它不会以启动它的用户的权限运行，而是以该文件所有者的权限运行。所以，如果在一个可执行文件上设置了 setuid 位，并且该文件由 root 拥有，当一个普通用户启动它时，它将以 root 权限运行。显然，如果 setuid 位使用不当的话，会带来潜在的安全风险。
+
+
+使用 setuid 权限的可执行文件的例子是 passwd，我们可以使用该程序更改登录密码。我们可以通过使用 ls 命令来验证：
+```
+ls -l /bin/passwd
+-rwsr-xr-x. 1 root root 27768 Feb 11 2017 /bin/passwd
+```
+如何识别 setuid 位呢？相信您在上面命令的输出已经注意到，setuid 位是用 s 来表示的，代替了可执行位的 x。小写的 s 意味着可执行位已经被设置，否则你会看到一个大写的 S。大写的 S 发生于当设置了 setuid 或 setgid 位、但没有设置可执行位 x 时。它用于提醒用户这个矛盾的设置：如果可执行位未设置，则 setuid 和 setgid 位均不起作用。setuid 位对目录没有影响。
+
 
