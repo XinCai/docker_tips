@@ -5,27 +5,19 @@
 
 ## Docker container 安全考虑类别 和 Tips
 
-#### 1.Vulnerable application code
 
-The best way to avoid running containers with known vulunerabilities is to scan images 
-扫描 docker images, 持续扫描 scanning process application 是否使用了 out of date packages （考虑使用snyk ， 来持续scan application code package）
 
-#### 2. Badly configured container images
-配置 container 的时候注意事项 configuring container to run as the root user
+| 安全类别名称 |描述|
+| ----------- |------|
+|Vulnerable application code|The best way to avoid running containers with known vulunerabilities is to scan images 
+扫描 docker images, 持续扫描 scanning process application 是否使用了 out of date packages （考虑使用snyk ， 来持续scan application code package）|
+|Badly configured container images|配置 container 的时候注意事项 configuring container to run as the root user|
+|Build machine attacks|add note here|
+| Supply chain attacks |images stored in a registry, 当用户 pull images 时候，确定 pulled 的image 是 当时 pushed 的images.|
+|Badly configured containers|add note here|
+|Vulnerable hosts|容器运行在host machine上面，确定 hosts上 没有运行 vulnerable code, 好的方法是 确定 minimize the amount of software installed on each host.|
+| Exposed secrets|Application code 需要配置 密码 或 证书 一类的来 communicate with other components in a system. |
 
-#### 3. Build machine attacks
-
-#### 4. Supply chain attacks 
-
-images stored in a registry, 当用户 pull images 时候，确定 pulled 的image 是 当时 pushed 的images.
-
-#### 5. Badly configured containers
-
-#### 6. Vulnerable hosts
-容器运行在host machine上面，确定 hosts上 没有运行 vulnerable code, 好的方法是 确定 minimize the amount of software installed on each host.
-
-#### 7. Exposed secrets
-Application code 需要配置 密码 或 证书 一类的来 communicate with other components in a system. 
 
 #### 8. Insecure networking
 不安全的网络， container 需要 通信 其他的 containers,  或者 outside world
