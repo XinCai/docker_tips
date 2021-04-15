@@ -20,6 +20,49 @@ RUN groupadd --gid 1000 node \
 
 ### Tip #2: Use a multi-stage build + distroless base image
 
+参考这个 Dockerfile, multi-stage build 
+
+好处： 
+1. Keeping the image size down. 
+
+Tips: 
+1. Compresses two `RUN` commands together using the Bash `&&` operator, to avoid creating an additional layer in the image
+For Example
+```
+FROM golang:1.7.3
+WORKDIR /go/src/github.com/alexellis/href-counter/
+COPY app.go .
+RUN go get -d -v golang.org/x/net/html \
+  && CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
+``` 
+
+```
+### First Stage ###
+# Base Image
+FROM node:12-slim as build
+WORKDIR /usr/src/app
+
+# Install Dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy in Application
+COPY . .
+
+### Second Stage ###
+FROM gcr.io/distroless/nodejs:12
+
+# Copy App + Dependencies from Build Stage
+COPY --from=build /usr/src/app /usr/src/app
+WORKDIR /usr/src/app
+
+# Set User to Non-Root
+USER 1000
+
+# Run Server
+CMD [ "server.js" ]
+```
+
 [Distroless Docker](https://www.youtube.com/watch?v=lviLZFciDv4 "2017 swampUP Sessions | Distroless Docker: Containerizing Apps, not VMs - Matthew Moore")
 
 ```
