@@ -104,6 +104,13 @@ ls -l /bin/passwd
 
 ## Linux Capabilities 
 
+**什么是 Linux Capabilities**  
+为了执行权限检查，Linux 区分两类进程：特权进程(其有效用户标识为 0，也就是超级用户 root)和非特权进程(其有效用户标识为非零)。 特权进程绕过所有内核权限检查，而非特权进程则根据进程凭证(通常为有效 UID，有效 GID 和补充组列表)进行完全权限检查。
 
+以常用的 passwd 命令为例，修改用户密码需要具有 root 权限，而普通用户是没有这个权限的。但是实际上普通用户又可以修改自己的密码，这是怎么回事？在 Linux 的权限控制机制中，有一类比较特殊的权限设置，比如 SUID(Set User ID on execution)，不了解 SUID 的同学请参考《Linux 特殊权限 SUID,SGID,SBIT》。因为程序文件 /bin/passwd 被设置了 SUID 标识，所以普通用户在执行 passwd 命令时，进程是以 passwd 的所有者，也就是 root 用户的身份运行，从而修改密码。
+
+SUID 虽然可以解决问题，却带来了安全隐患。当运行设置了 SUID 的命令时，通常只是需要很小一部分的特权，但是 SUID 给了它 root 具有的全部权限。因此一旦 被设置了 SUID 的命令出现漏洞，就很容易被利用。也就是说 SUID 机制在增大了系统的安全攻击面。
+
+Linux 引入了 capabilities 机制对 root 权限进行细粒度的控制，实现按需授权，从而减小系统的安全攻击面。本文将介绍 capabilites 机制的基本概念和用法。
 
 
