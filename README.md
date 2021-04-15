@@ -161,5 +161,8 @@ control groups -- `cgroups`
 
 [知乎上一片文章 很好初级介绍了 cgroup的机制](https://zhuanlan.zhihu.com/p/81668069 "知乎")
 
+**总结**：
+1. docker 技术就是利用了 linux cgroup 来分配资源
+2. 安全角度，限制资源使用有效的保护了系统，防止 your deployment by consuming excessive resources. 因此推荐来限制 memory 和cpu 当运行容器程序时
 
 
