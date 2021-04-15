@@ -4,9 +4,10 @@
 
 ### Tip #1: Don't run the container as the root user
 
-[non-root Dockerfile](Dockerfile.non-root "example")
+参考Dockerfile定义， `line 2` [non-root Dockerfile](Dockerfile.non-root "example") 
 
 在这个dockerfile 使用的base image 里面， 定义了 `user：node` 和 `user id: 1000`
+
 [node:12-slim](https://github.com/nodejs/docker-node/blob/31246f5f779cafa0930a1db04bd00d875d6a940d/12/stretch-slim/Dockerfile "定义了基础image的 user")
 
 所以在使用 这个基础  image 时候可以 set User to Non-Root `User 1000`
