@@ -124,6 +124,7 @@ Linux 引入了 capabilities 机制对 root 权限进行细粒度的控制，实
 下面是从 capabilities man page 中摘取的 capabilites 列表：
 
 | capability | 名称 |描述|
+| ----------- | ----------- |------|
 |CAP_AUDIT_CONTROL |	启用和禁用内核审计；|改变审计过滤规则；检索审计状态和过滤规则 |
 |CAP_AUDIT_READ	| 允许通过 multicast netlink | 套接字读取审计日志|
 3. CAP_AUDIT_WRITE	将记录写入内核审计日志
