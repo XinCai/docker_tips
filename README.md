@@ -153,7 +153,7 @@ Linux 引入了 capabilities 机制对 root 权限进行细粒度的控制，实
 ```
 $ sudo setcap cap_net_admin,cap_net_raw+ep /bin/ping
 ```
-被赋予合适的 capabilities 后，ping 命令又可以正常工作了，相比 SUID 它只具有必要的特权，在最大程度上减小了系统的安全攻击面。
+被赋予合适的 capabilities 后，ping 命令又可以正常工作了，**相比 SUID 它只具有必要的特权，在最大程度上减小了系统的安全攻击面**。
 
 
 ### It is a good idea to run software as a nonprivileged user whenever possible 
