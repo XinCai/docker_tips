@@ -151,3 +151,11 @@ chapter:
 
 1. Container images including with a setuid binary
 2. Additional capabilities granted to a container running as a non-root user
+
+
+## Control Groups
+
+control groups -- `cgroups`
+
+使用cgroup 来限制 resources such as memory , CPU, and network input/output. 
+
