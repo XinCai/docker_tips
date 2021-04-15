@@ -123,11 +123,20 @@ Linux 引入了 capabilities 机制对 root 权限进行细粒度的控制，实
 
 下面是从 capabilities man page 中摘取的 capabilites 列表：
 
-| capability | 名称 |描述|
-| ----------- | ----------- |------|
-|CAP_AUDIT_CONTROL |	启用和禁用内核审计；|改变审计过滤规则；检索审计状态和过滤规则 |
-|CAP_AUDIT_READ	| 允许通过 multicast netlink | 套接字读取审计日志|
-3. CAP_AUDIT_WRITE	将记录写入内核审计日志
-4. CAP_BLOCK_SUSPEND	使用可以阻止系统挂起的特性
-5. CAP_CHOWN	修改文件所有者的权限
-6. CAP_DAC_OVERRIDE	忽略文件的 DAC 访问限制
+| capability 名称 |描述|
+| ----------- |------|
+|CAP_AUDIT_CONTROL |	启用和禁用内核审计 改变审计过滤规则；检索审计状态和过滤规则 |
+|CAP_AUDIT_READ	| 允许通过 multicast netlink  套接字读取审计日志|
+|CAP_AUDIT_WRITE	|将记录写入内核审计日志 |
+|CAP_BLOCK_SUSPEND |	使用可以阻止系统挂起的特性 |
+|CAP_CHOWN |	修改文件所有者的权限 |
+|CAP_DAC_OVERRIDE	|忽略文件的 DAC 访问限制 |
+|CAP_FSETID	|允许设置文件的 setuid 位|
+|CAP_IPC_LOCK |	允许锁定共享内存片段|
+|CAP_IPC_OWNER |	忽略 IPC 所有权检查|
+|CAP_KILL |	允许对不属于自己的进程发送信号|
+|CAP_LEASE |	允许修改文件锁的 FL_LEASE 标志|
+|CAP_LINUX_IMMUTABLE |	允许修改文件的 IMMUTABLE 和 APPEND 属性标志|
+|CAP_MAC_ADMIN |	允许 MAC 配置或状态更改|
+|CAP_MAC_OVERRIDE|	覆盖 MAC(Mandatory Access Control)|
+|CAP_MKNOD|	允许使用 mknod() 系统调用|
