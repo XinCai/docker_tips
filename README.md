@@ -80,3 +80,7 @@ Application code 需要配置 密码 或 证书 一类的来 communicate with ot
 根据人员的职责 来给于特定的 权限。
 
 
+## File Permissions (文件权限是 安全的基石)  
+在 linux 操作系统下，everything is a file. 
+
+
