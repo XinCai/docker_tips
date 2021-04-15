@@ -159,7 +159,7 @@ control groups -- `cgroups`
 
 使用cgroup 来限制 resources such as memory , CPU, and network input/output. 
 
-[知乎上一片文章 很好初级介绍了 cgroup的机制](https://zhuanlan.zhihu.com/p/81668069 "知乎")
+[知乎上一片文章 很好的介绍了cgroup的机制](https://zhuanlan.zhihu.com/p/81668069 "知乎")
 
 **总结**：
 1. docker 技术就是利用了 linux cgroup 来分配资源
