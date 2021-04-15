@@ -40,8 +40,43 @@ Application code 需要配置 密码 或 证书 一类的来 communicate with ot
 共享计算资源 （sharing machine resources） 被成为 `multitenancy`
 在一个多租户的环境，不同的users (或者成为 tenants) 运行他们的 workloads 在共享的硬件（或者计算资源）， 需要有 更强的 boundaries between 他们的 workloads, 来确保之间不会被干扰。
 
+### Virtualization
+
+虚拟机 VM -- 有操作系统的虚拟机，通常来讲，虚拟机之间有强力的隔离效果， 意思是 邻居 （neighbors）大多不会 观察到或者 干扰到其他的 租户 (tenant)在 VM. 
+多租户 (multitenancy): 意思是 多个不同的group people 共享一个软件  (share a single instance of same software)， 多租户是指软件架构支持一个实例服务多个用户（Customer），每一个用户被称之为租户（tenant），软件给予租户可以对系统进行部分定制的功能。
+
+```
+例子：
+操作系统 --- 单租户系统
+电子邮件 --- 多租户系统
+```
+
+### Container Multitenancy 
+容器的多租户
+1. 在 kubernetes 世界里，使用 `namespace` 来细分 a cluster of machines 机器集群, 被不同的团队，个人和软件来使用。
+2. 使用 RBAC （role based access control）来限制 people 和  components 来访问 kubernetes的 不同namespaces
 
 
+## 安全原则 （security principal）
 
+#### 1. Least Privilege （最低权限 原则）
+最低权限原则， 对个人 或者 一个组成员 给出最低的权限， 不超过其职能范围的访问权限。
+
+#### 2. Defense in Depth (深度防御 原则)
+多层面 protection， layers of protection.
+一个layer 出现了安全状况， 另一个layer 会保护你的部署。 
+
+#### 3. Reducing the Attack Surface （减少攻击面 原则）
+
+1. Reducing access points by keeping interfaces small and simple where possible
+2. Limiting the users and components who can access a service
+3. Minimizing the amount of code
+
+#### 4. Limiting the Blast Radius （限制爆炸半径 原则）
+
+分割安全控制 表示 当出现 安全事件时，影响是有限的。容器非常适合遵循这一项原则， 因为将架构划分为多个微小的实例服务 micro service， 容器本身就可以充当安全边界。
+
+#### 5. Segregation of Duties （指责分工）
+根据人员的职责 来给于特定的 权限。
 
 
