@@ -10,7 +10,12 @@
 
 [参考 node:12-slim 镜像的定义](https://github.com/nodejs/docker-node/blob/31246f5f779cafa0930a1db04bd00d875d6a940d/12/stretch-slim/Dockerfile "定义了基础image的 user")
 
-所以在使用 这个基础  image 时候可以 set User to Non-Root `User 1000`
+```
+RUN groupadd --gid 1000 node \
+  && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
+```
+
+所以在[non-root Dockerfile](Dockerfile.non-root "example")文件中使用这个基础 image 时候可以 set User to Non-Root `User 1000` -- best practice
 
 
 ### Tip #2: Use a multi-stage build + distroless base image
