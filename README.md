@@ -113,7 +113,7 @@ ls -l /bin/passwd
 
 特权进程绕过所有内核权限检查，而非特权进程则根据进程凭证(通常为有效 UID，有效 GID 和补充组列表)进行完全权限检查。
 
-以常用的 passwd 命令为例，修改用户密码需要具有 root 权限，而普通用户是没有这个权限的。但是实际上普通用户又可以修改自己的密码，这是怎么回事？在 Linux 的权限控制机制中，有一类比较特殊的权限设置，比如 SUID(Set User ID on execution)，不了解 SUID 的同学请参考《Linux 特殊权限 SUID,SGID,SBIT》。因为程序文件 `/bin/passwd` 被设置了 SUID 标识，所以普通用户在执行 passwd 命令时，进程是以 `passwd` 的所有者，也就是 `root` 用户的身份运行，从而修改密码。
+以常用的 passwd 命令为例，修改用户密码需要具有 root 权限，而普通用户是没有这个权限的。但是实际上普通用户又可以修改自己的密码，这是怎么回事？在 Linux 的权限控制机制中，有一类比较特殊的权限设置，比如 `SUID(Set User ID on execution)`，不了解 SUID 的同学请参考`《Linux 特殊权限 SUID,SGID,SBIT》`。因为程序文件 `/bin/passwd` 被设置了 SUID 标识，所以普通用户在执行 passwd 命令时，进程是以 `passwd` 的所有者，也就是 `root` 用户的身份运行，从而修改密码。
 
 SUID 虽然可以解决问题，却带来了安全隐患。当运行设置了 SUID 的命令时，通常只是需要很小一部分的特权，但是 SUID 给了它 `root` 具有的全部权限。因此一旦 被设置了 SUID 的命令出现漏洞，就很容易被利用。也就是说 SUID 机制在增大了系统的安全攻击面。
 
@@ -141,6 +141,14 @@ Linux 引入了 capabilities 机制对 root 权限进行细粒度的控制，实
 |CAP_MAC_OVERRIDE|	覆盖 MAC(Mandatory Access Control)|
 |CAP_MKNOD|	允许使用 mknod() 系统调用|
 
+### 如何使用 capabilities?
+
+`getcap` 命令和 `setcap` 命令分别用来查看和设置程序文件的 `capabilities` 属性。下面我们演示如何使用 `capabilities` 代替 ping 命令的 SUID。
+因为 ping 命令在执行时需要访问网络，这就需要获得 root 权限，常规的做法是通过 SUID 实现的(和 passwd 命令相同)：
+
+[使用capabilities](https://www.cnblogs.com/sparkdev/p/11417781.html "使用capabilities 示例")
+
+
 ### It is a good idea to run software as a nonprivileged user whenever possible 
 默认的情况下， **container run as root**
 
@@ -149,8 +157,8 @@ Even if a container is running as a non-root user, there is potential for privil
 lation based on the Linux permissions mechanisms you have seen earlier in this
 chapter:
 
-1. Container images including with a setuid binary
-2. Additional capabilities granted to a container running as a non-root user
+1. Container images including with a `setuid binary`
+2. Additional `capabilities` granted to a container running as a non-root user
 
 
 ## Control Groups
