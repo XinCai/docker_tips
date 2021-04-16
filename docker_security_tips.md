@@ -20,7 +20,7 @@ RUN groupadd --gid 1000 node \
 
 ### Tip #2: Use a multi-stage build + distroless base image
 
-参考这个 Dockerfile, multi-stage build 
+**参考这个 Dockerfile, multi-stage build**
 
 好处： 
 1. Keeping the image size down. 
@@ -68,7 +68,11 @@ CMD [ "server.js" ]
 ```
 Distroless：谷歌内部使用的镜像构建文件
 
-Distroless 是谷歌内部使用的镜像构建文件，包括 Java 镜像，Node，Python 等镜像构建文件，Distroless 仅仅只包含运行服务所需要的最小镜像，不包含包管理工具，shell 命令行等其他功能。
+Distroless 是谷歌内部使用的镜像构建文件，包括 Java 镜像，Node，Python 等镜像构建文件，Distroless 仅仅只包含运行服务所需要的最小镜像，
+不包含包管理工具，shell 命令行等其他功能。
+
+"Distroless" images contain only your application and its runtime dependencies. They do not contain package managers, 
+shells or any other programs you would expect to find in a standard Linux distribution.
 ```
 
 [Docker MultiStage build](https://docs.docker.com/develop/develop-images/multistage-build/ "multi stage")
