@@ -88,6 +88,12 @@ shells or any other programs you would expect to find in a standard Linux distri
 
 ### Tip #5: Don't install/configure things within the Dockerfile without understanding the potential risks
 
+比如 下载第三方软件并且执行
+
+for example:
+
+`curl http://other-party-software | sh`
+
 
 ## Set current host user for docker container (Example)
 
