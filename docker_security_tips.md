@@ -83,6 +83,9 @@ shells or any other programs you would expect to find in a standard Linux distri
 
 ### Tip #4: Use a container image scanner to detect vulnerabilities
 
+使用工具来扫描 container image 
+几个 options 
+
 ### Tip #5: Don't install/configure things within the Dockerfile without understanding the potential risks
 
 
