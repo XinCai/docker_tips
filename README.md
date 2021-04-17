@@ -233,12 +233,30 @@ int main(int argc, char** argv) {
 }
 ```
 
-5。 编译该程序
+5. 编译该程序
 ```
 g++ -o test test.cc --std=c++11 -lpthread
 ```
 
-观察限制之前的运行状态, CPU 可以达到 100% 
+6. 观察限制之前的运行状态, `top`命令，CPU 可以达到 100% 
 
-6. 测试cpu的限制 
+7. 测试cpu的限制 
+```
+cgexec -g cpu:test_cpu ./test
+```
+在查看 `top` 命令， cpu使用率降低了一半。
+
+本文简单介绍了Cgroups的概念和使用，通过Cgroups可以实现资源限制和隔离。在实际的生产环境中，Cgroups技术被大量应用在各种容器技术中，包括docker、rocket等。
+
+这种资源限制和隔离技术的出现，使得模块间相互混部成为可能，大大提高了机器资源利用率，这也是云计算的关键技术之一。
+
+从安全角度观察上去， 合理配置的 `cgroups` 可以确保 一个进程 不会影响 其他进程。 
+
+
+容器container 运行 就像 普通的 Linux processes, 因此使用 cgroup 可以用来 限制 resources available to each container. 
+
+## 如何管理 Cgroups
+
+### cgroup 的层次结构
+
 
