@@ -334,9 +334,9 @@ The maximum that the cgroup is allowed to use is defined by `memory.limit_in_byt
 
 ### 设定 host 的资源限制额度
 
-默认情况下，memory 是不受使用限制的。
+**应用场景**
 
-You can see how much memory is available to the cgroup by examining the contents of its`memory.limit_in_bytes` file:
+默认情况下，memory 是不受使用限制的。 You can see how much memory is available to the cgroup by examining the contents of its`memory.limit_in_bytes` file:
 ```
 root@vagrant:/sys/fs/cgroup/memory$ cat user.slice/user-1000.slice/session-43.sco
 pe/sh/memory.limit_in_bytes
@@ -346,5 +346,19 @@ pe/sh/memory.limit_in_bytes
 By default the memory isn’t limited, so this giant number represents all the memory available to the virtual machine I’m using to generate this example
 
 如果一个process 可以使用 unlimit memory, 这个情况下，会饿死其他的 processes on same host. (这个场景通常情况 出现在 应用程序出现了memory leak状况，不断的consume 更多的memory,这样会影响同一个 host 里 其他的processes )
+
+这个时候就需要 setting limits on the memory and other resources that one process can access, 这样做的好处， 可以减少 其中一个 app memory leak 对其他 processes 的影响，不会因为一个有 memory leak 的 app, 从而导致整个系统的其他processes 无法正常工作。
+
+修改  `config.json`
+```
+"linux": {
+        "resources": {
+             "memory": {
+                 "limit": 1000000
+              },
+          ...
+         }
+}
+```
 
 
