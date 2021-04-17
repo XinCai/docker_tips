@@ -155,7 +155,7 @@ chapter:
 2. Additional `capabilities` granted to a container running as a non-root user
 
 
-## Control Groups
+## Control Groups （cgroups）
 
 control groups -- `cgroups`
 
@@ -258,5 +258,41 @@ cgexec -g cpu:test_cpu ./test
 ## 如何管理 Cgroups
 
 ### cgroup 的层次结构
+
+cgroup 是由 cgroup controller 来管理层次的。 
+
+查看你系统里不同类型的 cgroups , 通常保存在 The Linux kernel communicates information about cgroups through a set of pseudo‐filesystems that typically reside `/sys/fs/cgroup`
+
+查看cgroup content 
+
+```
+root@vagrant:/sys/fs/cgroup$ ls
+blkio cpu,cpuacct freezer net_cls perf_event systemd
+cpu cpuset hugetlb net_cls,net_prio pids unified
+cpuacct devices memory net_prio rdma
+```
+
+管理cgroup 意思就是  reading and writing to the files and directories within these hierarchies. 
+
+举例说明， memory cgroup as an example
+```
+root@vagrant:/sys/fs/cgroup$ ls memory/
+cgroup.clone_children memory.limit_in_bytes
+cgroup.event_control memory.max_usage_in_bytes
+cgroup.procs memory.move_charge_at_immigrate
+cgroup.sane_behavior memory.numa_stat
+init.scope memory.oom_control
+memory.failcnt memory.pressure_level
+memory.force_empty memory.soft_limit_in_bytes
+memory.kmem.failcnt memory.stat
+memory.kmem.limit_in_bytes memory.swappiness
+memory.kmem.max_usage_in_bytes memory.usage_in_bytes
+memory.kmem.slabinfo memory.use_hierarchy
+memory.kmem.tcp.failcnt notify_on_release
+memory.kmem.tcp.limit_in_bytes release_agent
+memory.kmem.tcp.max_usage_in_bytes system.slice
+memory.kmem.tcp.usage_in_bytes tasks
+memory.kmem.usage_in_bytes user.slice
+```
 
 
