@@ -349,7 +349,7 @@ By default the memory isn’t limited, so this giant number represents all the m
 
 这个时候就需要 setting limits on the memory and other resources that one process can access, 这样做的好处， 可以减少 其中一个 app memory leak 对其他 processes 的影响，不会因为一个有 memory leak 的 app, 从而导致整个系统的其他processes 无法正常工作。
 
-修改  `config.json`
+修改  `config.json`, Cgroup limits are configured in the `linux:resources` section of `config.json`,
 ```
 "linux": {
         "resources": {
