@@ -325,6 +325,15 @@ memory.kmem.tcp.usage_in_bytes tasks
 memory.kmem.usage_in_bytes
 ```
 
+其中一些文件说明 for example: 
+`memory.usage_in_bytes` is the file that describes how much memory is currently being used by the control group.
+The maximum that the cgroup is allowed to use is defined by `memory.limit_in_bytes`
+
+当启动一个
+
+
+
+
 
 
 
