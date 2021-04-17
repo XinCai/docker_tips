@@ -363,4 +363,29 @@ By default the memory isn’t limited, so this giant number represents all the m
 
 ### Assigning a Process to a Cgroup
 
+如何分配一个 process 到 cgroup 里， writing its process ID into the `cgroup.procs` file for the cgroup 
+
+Example,  `29903` is the process ID of a shell : 
+```
+root@vagrant:/sys/fs/cgroup/memory/liz$ echo 100000 > memory.limit_in_bytes
+root@vagrant:/sys/fs/cgroup/memory/liz$ cat memory.limit_in_bytes
+98304
+root@vagrant:/sys/fs/cgroup/memory/liz$ echo 29903 > cgroup.procs
+root@vagrant:/sys/fs/cgroup/memory/liz$ cat cgroup.procs
+29903
+root@vagrant:/sys/fs/cgroup/memory/liz$ cat /proc/29903/cgroup | grep memory
+8:memory:/liz
+```
+
+The shell is now a member of the cgroup, with its memory limited to a little under `100kB`. This isn’t a lot to play with, so even trying to run ls from inside the shell breaches the cgroup limit:
+```
+$ ls
+Killed
+```
+The process gets killed when it attempts to exceed the memory limit.
+
+
+
+
+
 
