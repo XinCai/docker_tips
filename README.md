@@ -294,5 +294,37 @@ memory.kmem.tcp.max_usage_in_bytes system.slice
 memory.kmem.tcp.usage_in_bytes tasks
 memory.kmem.usage_in_bytes user.slice
 ```
+### 创建 cgroups
+
+就是在 memory directory 里面 创建一个子目录， linux kernel 会自动的 填充 各种表示文件到这个 字目录里面。
+
+Creating a subdirectory inside this memory directory creates a cgroup, and the kernel
+automatically populates the directory with the various files that represent parameters
+and statistics about the cgroup:
+
+**for example**
+
+```
+root@vagrant:/sys/fs/cgroup$ mkdir memory/liz
+
+root@vagrant:/sys/fs/cgroup$ ls memory/liz/
+
+cgroup.clone_children memory.limit_in_bytes
+cgroup.event_control memory.max_usage_in_bytes
+cgroup.procs memory.move_charge_at_immigrate
+memory.failcnt memory.numa_stat
+memory.force_empty memory.oom_control
+memory.kmem.failcnt memory.pressure_level
+memory.kmem.limit_in_bytes memory.soft_limit_in_bytes
+memory.kmem.max_usage_in_bytes memory.stat
+memory.kmem.slabinfo memory.swappiness
+memory.kmem.tcp.failcnt memory.usage_in_bytes
+memory.kmem.tcp.limit_in_bytes memory.use_hierarchy
+memory.kmem.tcp.max_usage_in_bytes notify_on_release
+memory.kmem.tcp.usage_in_bytes tasks
+memory.kmem.usage_in_bytes
+```
+
+
 
 
