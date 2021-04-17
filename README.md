@@ -168,3 +168,77 @@ control groups -- `cgroups`
 2. 安全角度，限制资源使用有效的保护了系统，防止 your deployment by consuming excessive resources. 因此推荐来限制 memory 和cpu 当运行容器程序时
 
 
+### 3.1 cgroups的安装 (测试环境为 ubuntu 18.10)
+
+做一个实验来理解cgroup，实验步骤，
+
+1. 安装 cgroups
+```
+sudo apt install cgroup-bin
+```
+安装完成后，系统会出现该目录/sys/fs/cgroup
+
+2. 创建cpu资源控制组，限制cpu使用率最大为50%
+
+```
+$ cd /sys/fs/cgroup/cpu
+$ sudo mkdir test_cpu
+$ sudo echo '10000' > test_cpu/cpu.cfs_period_us
+$ sudo echo '5000' > test_cpu/cpu.cfs_quota_us
+```
+
+3. 创建mem资源控制组，限制内存最大使用为100MB
+
+```
+$ cd /sys/fs/cgroup/memory
+$ sudo mkdir test_mem
+$ sudo echo '104857600' > test_mem/memory.limit_in_bytes
+```
+
+4. 将进程加入到资源限制组
+
+测试代码test.cc如下：
+```
+#include <unistd.h>
+#include <stdio.h>
+#include <cstring>
+#include <thread>
+
+void test_cpu() {
+    printf("thread: test_cpu start\n");
+    int total = 0;
+    while (1) {
+        ++total;
+    }
+}
+
+void test_mem() {
+    printf("thread: test_mem start\n");
+    int step = 20;
+    int size = 10 * 1024 * 1024; // 10Mb
+    for (int i = 0; i < step; ++i) {
+        char* tmp = new char[size];
+        memset(tmp, i, size);
+        sleep(1);
+    }
+    printf("thread: test_mem done\n");
+}
+
+int main(int argc, char** argv) {
+    std::thread t1(test_cpu);
+    std::thread t2(test_mem);
+    t1.join();
+    t2.join();
+    return 0;
+}
+```
+
+5。 编译该程序
+```
+g++ -o test test.cc --std=c++11 -lpthread
+```
+
+观察限制之前的运行状态, CPU 可以达到 100% 
+
+6. 测试cpu的限制 
+
