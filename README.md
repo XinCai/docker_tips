@@ -329,7 +329,8 @@ memory.kmem.usage_in_bytes
 `memory.usage_in_bytes` is the file that describes how much memory is currently being used by the control group.
 The maximum that the cgroup is allowed to use is defined by `memory.limit_in_bytes`
 
-当启动一个
+当启动一个容器 container 时候， 运行环境 runtime 会创建一个 新的 cgroups for it. 可以用 `lscgroup`来查看这些 `cgroups` （ubuntu系统里，安装 `cgroup-tools` package）
+
 
 
 
