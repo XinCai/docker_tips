@@ -332,7 +332,7 @@ The maximum that the cgroup is allowed to use is defined by `memory.limit_in_byt
 当启动一个容器 container 时候， 运行环境 runtime 会创建一个 新的 cgroups for it. 可以用 `lscgroup`来查看这些 `cgroups` （ubuntu系统里，安装 `cgroup-tools` package）
 
 
-### Setting Resource Limits
+### 设定 host 的资源限制额度
 
 默认情况下，memory 是不受使用限制的。
 
