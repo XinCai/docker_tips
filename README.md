@@ -332,9 +332,19 @@ The maximum that the cgroup is allowed to use is defined by `memory.limit_in_byt
 当启动一个容器 container 时候， 运行环境 runtime 会创建一个 新的 cgroups for it. 可以用 `lscgroup`来查看这些 `cgroups` （ubuntu系统里，安装 `cgroup-tools` package）
 
 
+### Setting Resource Limits
 
+默认情况下，memory 是不受使用限制的。
 
+You can see how much memory is available to the cgroup by examining the contents of its`memory.limit_in_bytes` file:
+```
+root@vagrant:/sys/fs/cgroup/memory$ cat user.slice/user-1000.slice/session-43.sco
+pe/sh/memory.limit_in_bytes
+9223372036854771712
+```
 
+By default the memory isn’t limited, so this giant number represents all the memory available to the virtual machine I’m using to generate this example
 
+如果一个process 可以使用 unlimit memory, 这个情况下，会饿死其他的 processes on same host. (这个场景通常情况 出现在 应用程序出现了memory leak状况，不断的consume 更多的memory,这样会影响同一个 host 里 其他的processes )
 
 
