@@ -70,6 +70,8 @@
 ## File Permissions (文件权限是 安全的基石)  
 在 linux 操作系统下，everything is a file. 
 
+## CHAPTER 2: Linux System Calls, Permissions, and Capabilities
+
 ### 理解 setuid 位
 
 通常，在类 Unix 操作系统上，文件和目录的所有权是基于文件创建者的默认 uid（user-id）和 gid（group-id）的。启动一个进程时也是同样的情况：它以启动它的用户的 uid 和 gid 运行，并具有相应的权限。这种行为可以通过使用特殊的权限进行改变。
@@ -88,8 +90,7 @@ ls -l /bin/passwd
 
 #### Docker `--no-new-privileges` flag on a `docker run` command
 
-
-## Linux Capabilities 
+### Linux Capabilities 
 
 **什么是 Linux Capabilities**  
 为了执行权限检查，Linux 区分两类进程：
@@ -155,7 +156,7 @@ chapter:
 2. Additional `capabilities` granted to a container running as a non-root user
 
 
-## Control Groups （cgroups）
+## CHAPTER 3: Control Groups （cgroups）
 
 control groups -- `cgroups`
 
@@ -385,7 +386,9 @@ Killed
 The process gets killed when it attempts to exceed the memory limit.
 
 
+### cgroups 总结
 
+Cgroups limit the resources available to different Linux processes. It’s recommended that you set memory and CPU limits when you run your container applications.
 
 
 
