@@ -464,3 +464,5 @@ root 10 1 0 18:42 pts/0 00:00:00 ps -eaf
 root@cdf75e7a6c50:/$ exit
 vagrant@myhost:~$
 ```
+
+这个机制是通过 `ID namespace` 来实现的， 这是通过进程ID名称空间实现的，该名称空间限制了进程ID的 集合  可见的。
