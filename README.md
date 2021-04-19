@@ -393,4 +393,37 @@ Cgroups limit the resources available to different Linux processes. It’s recom
 
 ## Chapter 4 : 隔离容器 （Container Isolation）
 
+### Linux Namespaces (命名空间)
+
+`cgroups` 是来控制 一个进程（process）可以使用多少资源
+`namespaces` 是来控制 进程 (process) 可以访问的空间
+
+从 Linux kernel v2.4.19 版本开始， 介绍了 namespaces 这个概念。
+
+**命名空间的种类 (different kinds of namespaces)**
+
+```
+• Unix Timesharing System (UTS)—this sounds complicated, but to all intents and
+purposes this namespace is really just about the hostname and domain names for
+the system that a process is aware of. (uts)
+• Process IDs (pid)
+• Mount points (mnt)
+• Network (net)
+• User and group IDs (pid)
+• Inter-process communications (IPC)
+• Control groups (cgroups)
+```
+
+一个进程 (process) 只能存在一个 命名空间内。 
+
+### 查看 namespaces
+```
+lsns
+```
+
+
+
+
+
+
 
