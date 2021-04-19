@@ -415,11 +415,36 @@ Cgroups limit the resources available to different Linux processes. It’s recom
 一个进程 (process) 只能存在一个 命名空间内。 
 
 ### 查看 namespaces
+run 这个命令 as root user
 ```
 lsns
 ```
 显示 当前的 namespaces
 
+
+### Isolating the Hostname 隔离 hostname
+
+UTS(Unix timesharing system). 
+
+实验 使用 `unshare` ( unshare - run program in new namespaces ) 命令
+```
+unshare [options] [program [arguments]]
+```
+Let’s give it a try. You need to have root privileges to do this, hence the sudo at the start of the line:
+```
+vagrant@myhost:~$ sudo unshare --uts sh
+$ hostname
+myhost
+$ hostname experiment
+$ hostname
+experiment
+$ exit
+vagrant@myhost:~$ hostname
+myhost
+```
+[unshare](unshare.png)
+This runs a `sh` shell in a new process that has a new UTS namespace. Any programs you run inside the shell will inherit its namespaces. When you run the hostname
+command, it executes in the new UTS namespace that has been isolated from that of the host machine.
 
 
 
