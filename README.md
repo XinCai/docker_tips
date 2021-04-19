@@ -442,6 +442,16 @@ $ exit
 vagrant@myhost:~$ hostname
 myhost
 ```
+
+
+**3种方法更改Linux系统的主机名(hostname)** 
+1. 查看当前的主机名 `hostname` 也可以使用 `hostnamectl` 
+2. 更改主机名的第一种方法, 主机名保存在`/etc/hostname`文件里，所以我们可以打开这个文件，手动编辑主机名。`sudo nano /etc/hostname`, 将当前的主机名删除，然后输入一个新的主机名，再保存文件。现在使用`hostname`或`hostnamectl`命令就会发现主机名已经更改了。如果现在打开一个新的终端窗口也会发现主机名的更改。这种更改主机名的方法是持久性的，也就是说重启电脑后你会看到新的主机名。更新`/etc/hosts`文件, 在更改主机名后我们需要更新`/etc/hosts`解析文件, `sudo nano /etc/hosts` 把旧的主机名删除，替换为新的主机名，保存文件就行了, 如果你不更新`/etc/hosts`文件，那么有的程序，如sudo，不知道如何解析新的主机名。
+3. 更改主机名的第二种方法：`hostnamectl`命令, `sudo hostnamectl set-hostname <newhostname>` , 这条命令会删除`/etc/hostname`文件中的主机名，然后替换为新的主机名。和第一种方法一样，我们也需要更新`/etc/hosts`文件。这两种方法的本质都是一样的。 
+4. 方法3：临时更改主机名, 如果只需要临时更改主机名，可以使用hostname命令。`sudo hostname <new-hostname>` 这条命令不会更改`/etc/hostname`文件中的静态主机名（static hostname），它更改的只是临时主机名（transient hostname）。所以重启计算机后会回到旧的主机名。
+
+静态主机名保存在/etc/hostname文件中
+
 ![unshare](image/unshare.png "unshare")
 
 **说明** ：其中 `sudo unshare --uts sh`  这条命令的意思是，在 `uts` 命名空间类型下，运行 `sh` process, 主机（host machine）的 hostname 被隔离了, 隔离 `sh` 进程， a new process 是通过 UTS 命名空间。 
