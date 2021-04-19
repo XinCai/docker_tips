@@ -452,3 +452,15 @@ command, it executes in the new UTS namespace that has been isolated from that o
 这是**容器工作方式的关键部分**。 命名空间为它们提供了一组 独立于主机和其他容器的资源（在本例中为主机名）。 但是我们仍在谈论由同一Linux内核运行的进程。 这将带来安全隐患，我将在本章稍后讨论。
 
 ### 隔离进程ID -- Isolating Process IDs （PID）
+
+运行 `ps -eaf` 在一个docker container 里面，只能看到 only processes running inside that container, 看不到任何的 process running on the host 
+
+```
+vagrant@myhost:~$ docker run --rm -it --name hello ubuntu bash
+root@cdf75e7a6c50:/$ ps -eaf
+UID PID PPID C STIME TTY TIME CMD
+root 1 0 0 18:41 pts/0 00:00:00 bash
+root 10 1 0 18:42 pts/0 00:00:00 ps -eaf
+root@cdf75e7a6c50:/$ exit
+vagrant@myhost:~$
+```
