@@ -442,7 +442,7 @@ $ exit
 vagrant@myhost:~$ hostname
 myhost
 ```
-[unshare](unshare.png)
+[unshare](image/unshare.png "unshare")
 This runs a `sh` shell in a new process that has a new UTS namespace. Any programs you run inside the shell will inherit its namespaces. When you run the hostname
 command, it executes in the new UTS namespace that has been isolated from that of the host machine.
 
