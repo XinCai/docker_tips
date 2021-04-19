@@ -422,7 +422,7 @@ lsns
 显示 当前的 namespaces
 
 
-### 隔离 hostname -- Isolating the Hostname （UTS）
+### 隔离Hostname -- Isolating the Hostname （UTS）
 
 UTS(Unix timesharing system). 
 
