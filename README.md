@@ -422,7 +422,7 @@ lsns
 显示 当前的 namespaces
 
 
-### Isolating the Hostname 隔离 hostname
+### 隔离 hostname -- Isolating the Hostname （UTS）
 
 UTS(Unix timesharing system). 
 
@@ -449,6 +449,6 @@ myhost
 This runs a `sh` shell in a new process that has a new UTS namespace. Any programs you run inside the shell will inherit its namespaces. When you run the hostname
 command, it executes in the new UTS namespace that has been isolated from that of the host machine.
 
-这个 运行
+这是**容器工作方式的关键部分**。 命名空间为它们提供了一组 独立于主机和其他容器的资源（在本例中为主机名）。 但是我们仍在谈论由同一Linux内核运行的进程。 这将带来安全隐患，我将在本章稍后讨论。
 
-
+### 隔离进程ID -- Isolating Process IDs （PID）
