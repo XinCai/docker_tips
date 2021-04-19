@@ -403,9 +403,7 @@ Cgroups limit the resources available to different Linux processes. It’s recom
 **命名空间的种类 (different kinds of namespaces)**
 
 ```
-• (uts) -- Unix Timesharing System (UTS)—this sounds complicated, but to all intents and
-purposes this namespace is really just about the hostname and domain names for
-the system that a process is aware of. 
+• (uts) -- Unix Timesharing System (UTS)—this sounds complicated, but to all intents and purposes this namespace is really just about the hostname and domain names for the system that a process is aware of. 
 • (pid) -- Process IDs 
 • (mnt) -- Mount points 
 • (net) -- Network 
@@ -420,7 +418,7 @@ the system that a process is aware of.
 ```
 lsns
 ```
-
+显示 当前的 namespaces
 
 
 
