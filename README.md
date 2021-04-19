@@ -403,15 +403,15 @@ Cgroups limit the resources available to different Linux processes. It’s recom
 **命名空间的种类 (different kinds of namespaces)**
 
 ```
-• Unix Timesharing System (UTS)—this sounds complicated, but to all intents and
+• (uts) -- Unix Timesharing System (UTS)—this sounds complicated, but to all intents and
 purposes this namespace is really just about the hostname and domain names for
-the system that a process is aware of. (uts)
-• Process IDs (pid)
-• Mount points (mnt)
-• Network (net)
-• User and group IDs (pid)
-• Inter-process communications (IPC)
-• Control groups (cgroups)
+the system that a process is aware of. 
+• (pid) -- Process IDs 
+• (mnt) -- Mount points 
+• (net) -- Network 
+• (pid) -- User and group IDs
+• (ipc) -- Inter-process communications 
+• (cgroups) -- Control groups 
 ```
 
 一个进程 (process) 只能存在一个 命名空间内。 
