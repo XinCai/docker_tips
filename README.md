@@ -444,10 +444,11 @@ myhost
 ```
 ![unshare](image/unshare.png "unshare")
 
+**说明** ：其中 `sudo unshare --uts sh`  这条命令的意思是，在 `uts` 命名空间类型下，运行 `sh` process, 主机（host machine）的 hostname 被隔离了, 隔离 `sh` 进程， a new process 是通过 UTS 命名空间。 
+
 This runs a `sh` shell in a new process that has a new UTS namespace. Any programs you run inside the shell will inherit its namespaces. When you run the hostname
 command, it executes in the new UTS namespace that has been isolated from that of the host machine.
 
-
-
+这个 运行
 
 
