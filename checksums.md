@@ -17,3 +17,5 @@ If you know the checksum of the original file, you can run a checksum or hashing
 ![checksum](image/checksum.png)
 
 ![checksum](image/checksum2.png)
+
+参考文章 使用 checksum https://medium.com/@EvgeniIvanov/how-to-verify-checksum-on-mac-988f166b0c4f 
