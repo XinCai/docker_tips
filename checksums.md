@@ -5,3 +5,11 @@ If you know the checksum of an original file, you can use a checksum utility to 
 
 用来检验copy of file 是不是 和 原文件 相同 identical. 
 
+## 何时使用 checksums
+
+You can use checksums to check files and other data for errors that occur during transmission or storage. 
+For example, a file might not have properly downloaded due to network issues, or hard drive problems could have caused corruption in a file on disk.
+If you know the checksum of the original file, you can run a checksum or hashing utility on it. If the resulting checksum matches, you know the file you have is identical.
+
+
+
