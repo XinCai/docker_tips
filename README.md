@@ -262,6 +262,8 @@ cgexec -g cpu:test_cpu ./test
 
 cgroup 是由 cgroup controller 来管理层次的。 
 
+Cgroups 是 control groups 的缩写，是 Linux 内核提供的一种可以限制、记录、隔离进程组（process groups）所使用的物理资源（如：cpu,memory,IO 等等）的机制。最初由 google 的工程师提出，后来被整合进 Linux 内核。Cgroups 也是 LXC 为实现虚拟化所使用的资源管理手段，可以说没有 cgroups 就没有 LXC
+
 查看你系统里不同类型的 cgroups , 通常保存在 The Linux kernel communicates information about cgroups through a set of pseudo‐filesystems that typically reside `/sys/fs/cgroup`
 
 查看cgroup content 
