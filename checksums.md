@@ -12,4 +12,5 @@ For example, a file might not have properly downloaded due to network issues, or
 If you know the checksum of the original file, you can run a checksum or hashing utility on it. If the resulting checksum matches, you know the file you have is identical.
 
 
+## 如何使用 checksums
 
