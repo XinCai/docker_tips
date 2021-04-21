@@ -15,3 +15,5 @@ If you know the checksum of the original file, you can run a checksum or hashing
 ## 如何使用 checksums
 
 ![checksum](image/checksum.png)
+
+![checksum](image/checksum2.png)
