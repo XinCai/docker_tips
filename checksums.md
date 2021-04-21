@@ -19,3 +19,7 @@ If you know the checksum of the original file, you can run a checksum or hashing
 ![checksum](image/checksum2.png)
 
 参考文章 使用 checksum https://medium.com/@EvgeniIvanov/how-to-verify-checksum-on-mac-988f166b0c4f 
+
+## 比较结果
+
+If the checksum matches, the files are identical. If not, there’s a problem—perhaps the file is corrupted, or you’re just comparing two different files. If you downloaded a copy of the file and its checksum doesn’t match what you expect, try downloading the file again.
