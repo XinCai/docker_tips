@@ -1,4 +1,4 @@
-# Container (Docker) Tips
+# Container (Docker) Security
 
 ## [How to secure your Docker containers](docker_security_tips.md "tips")
 
