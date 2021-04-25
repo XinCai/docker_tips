@@ -478,3 +478,7 @@ vagrant@myhost:~$
 ```
 
 这个机制是通过 `ID namespace` 来实现的， 这是通过进程ID名称空间实现的，该名称空间限制了进程ID的 集合  可见的。
+
+
+查看 /proc directory , Every numbered directory in /proc corresponds to a process ID, 
+
