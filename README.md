@@ -510,3 +510,11 @@ vagrant@myhost:~$ ls -l /proc/28441/exe
 lrwxrwxrwx 1 vagrant vagrant 0 Oct 10 13:32 /proc/28441/exe -> /bin/bash
 ```
 
+`ps` 命令 会检查 `/proc` 文件夹里面的信息，有关 running process 的信息。因为 `/proc` 文件夹 在 `root directory` 下面，如果想要 `ps` 只是 return information about processes inside new namespace,  需要 一个 separate copy of `/proc` directory, where the kernel can write information about the namespace processes.  Given that `/proc` 是一个 `root` 下面的directory， 这个需求需要 change root directory 来满足。 
+
+#### 改变root directory 的文件夹路径
+
+在容器内部， 用户是无法看到 host 的整个 filesystem, instead, 用户只能看到 主机文件系统的 子集 subset。 这是因为，当container创建的时候， `root directory` 被改变了。 
+
+改变 `root` directory 的命令`chroot` command. 
+
