@@ -480,5 +480,33 @@ vagrant@myhost:~$
 这个机制是通过 `ID namespace` 来实现的， 这是通过进程ID名称空间实现的，该名称空间限制了进程ID的 集合  可见的。
 
 
-查看 /proc directory , Every numbered directory in /proc corresponds to a process ID, 
+查看 `/proc` directory , Every numbered directory in `/proc` corresponds to a process ID, 
+
+Every numbered directory in `/proc` corresponds to a process ID, and there is a lot of
+interesting information about a process inside its directory. For example, `/proc/
+<pid>/exe` is a symbolic link to the executable that’s being run inside this particular
+process, as you can see in the following example:
+    
+```
+vagrant@myhost:~$ ps
+PID TTY TIME CMD
+28441 pts/1 00:00:00 bash
+28558 pts/1 00:00:00 ps
+vagrant@myhost:~$ ls /proc/28441
+attr fdinfo numa_maps smaps
+autogroup gid_map oom_adj smaps_rollup
+auxv io oom_score stack
+cgroup limits oom_score_adj stat
+clear_refs loginuid pagemap statm
+cmdline map_files patch_state status
+comm maps personality syscall
+coredump_filter mem projid_map task
+cpuset mountinfo root timers
+cwd mounts sched timerslack_ns
+environ mountstats schedstat uid_map
+exe net sessionid wchan
+fd ns setgroups
+vagrant@myhost:~$ ls -l /proc/28441/exe
+lrwxrwxrwx 1 vagrant vagrant 0 Oct 10 13:32 /proc/28441/exe -> /bin/bash
+```
 
