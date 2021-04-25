@@ -514,8 +514,23 @@ lrwxrwxrwx 1 vagrant vagrant 0 Oct 10 13:32 /proc/28441/exe -> /bin/bash
 
 #### 改变root directory 的文件夹路径
 
+`chroot` (英文全称：`change root`) 命令用于改变根目录。 `chroot` 命令把根目录换成指定的目的目录。
+
+#### 为什么要使用 `chroot` 命令
+1. 增加了系统的安全性，限制了用户的权力：
+在经过 chroot 之后，在新根下将访问不到旧系统的根目录结构和文件，这样就增强了系统的安全性。一般会在用户登录前应用 chroot，把用户的访问能力控制在一定的范围之内。
+
+2. 建立一个与原系统隔离的系统目录结构，方便用户的开发：
+使用 chroot 后，系统读取的是新根下的目录和文件，这是一个与原系统根下文件不相关的目录结构。在这个新的环境中，可以用来测试软件的静态编译以及一些与系统不相关的独立开发。
+
+3. 切换系统的根目录位置，引导 Linux 系统启动以及急救系统等：
+`chroot` 的作用就是切换系统的根位置，而这个作用最为明显的是在系统初始引导磁盘的处理过程中使用，从初始 RAM 磁盘 (initrd) 切换系统的根位置并执行真正的 init，本文的最后一个 demo 会详细的介绍这种用法。
+
 在容器内部， 用户是无法看到 host 的整个 filesystem, instead, 用户只能看到 主机文件系统的 子集 subset。 这是因为，当container创建的时候， `root directory` 被改变了。 
 
 改变 `root` directory 的命令`chroot` command. 
 
 To summarize, `chroot` literally “changes the root” for a process. After changing the root, the process (and its children) will be able to access only the files and directories that are lower in the hierarchy than the new root directory.
+
+https://www.cnblogs.com/sparkdev/p/8556075.html
+
