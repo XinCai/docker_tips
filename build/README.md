@@ -1,1 +1,36 @@
 #  在工业中 build一个 Dockerfile 
+
+### 使用 --build-arg 传入 arg 在build time时， 在用 env 使用传入的值
+
+Dockerfile: 
+```
+```
+
+Build docker command: 
+```
+        docker build \
+        -t "${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}-${TIMESTAMP}" \
+        -t "${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}" \
+        . \
+        --build-arg orgname_biz_org='org name' \
+        --build-arg orgname_biz_unit='unit name' \
+        --build-arg orgname_build_by="${BUILD_QUEUEDBY}" \
+        --build-arg orgname_build_date="${TIMESTAMP}" \
+        --build-arg orgname_build_id="${BUILD_BUILDID}" \
+        --build-arg orgname_build_number="${BUILD_BUILDNUMBER}" \
+        --build-arg orgname_src_author="${BUILD_SOURCEVERSIONAUTHOR}" \
+        --build-arg orgname_src_branch="${BUILD_SOURCEBRANCHNAME}" \
+        --build-arg orgname_src_version="${BUILD_SOURCEVERSION}" \
+        --label "com.orgname.build.by=${BUILD_QUEUEDBY}" \
+        --label "com.orgname.build.date=${TIMESTAMP}" \
+        --label "com.orgname.build.id=${BUILD_BUILDID}" \
+        --label "com.orgname.build.number=${BUILD_BUILDNUMBER}" \
+        --label "com.orgname.src.author=${BUILD_SOURCEVERSIONAUTHOR}" \
+        --label "com.orgname.src.branch=${BUILD_SOURCEBRANCHNAME}" \
+        --label "com.orgname.src.version=${BUILD_SOURCEVERSION}" \
+        --label "com.orgname.docker.cmd=docker run ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}-${TIMESTAMP}" ||
+        {
+          echo "##[error]ERROR: Failed to build docker image!"
+          exit 1
+        }
+```
