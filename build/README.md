@@ -57,3 +57,4 @@ Build docker command:
           exit 1
         }
 ```
+![](../image/docker_arg.png)
