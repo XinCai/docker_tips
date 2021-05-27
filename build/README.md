@@ -4,6 +4,29 @@
 
 Dockerfile: 
 ```
+ARG orgname_biz_org='org name '
+ARG orgname_biz_unit='unit name'
+ARG orgname_build_by
+ARG orgname_build_date
+ARG orgname_build_id
+ARG orgname_build_number
+ARG orgname_src_author
+ARG orgname_src_branch
+ARG orgname_src_version
+
+ENV INFO_orgname_BIZ_ORG=$orgname_biz_org
+ENV INFO_orgname_BIZ_UNIT=$orgname_biz_unit
+ENV INFO_orgname_BASEIMAGE_BIZ_ORG=$orgname_biz_org
+ENV INFO_orgname_BASEIMAGE_BIZ_UNIT=$orgname_biz_unit
+ENV INFO_orgname_BASEIMAGE_BUILD_BY=$orgname_build_by
+ENV INFO_orgname_BASEIMAGE_BUILD_DATE=$orgname_build_date
+ENV INFO_orgname_BASEIMAGE_BUILD_ID=$orgname_build_id
+ENV INFO_orgname_BASEIMAGE_BUILD_NUMBER=$orgname_build_number
+ENV INFO_orgname_BASEIMAGE_SRC_AUTHOR=$orgname_src_author
+ENV INFO_orgname_BASEIMAGE_SRC_BRANCH=$orgname_src_branch
+ENV INFO_orgname_BASEIMAGE_SRC_VERSION=$orgname_src_version
+
+ENTRYPOINT /usr/bin/start.sh
 ```
 
 Build docker command: 
